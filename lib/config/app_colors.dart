@@ -6,6 +6,8 @@ class AppTheme {
   static const Color  ogreOdorGrade4 = Color.fromRGBO(255, 71, 11, 0.51);
   static const Color  ogreOdorGrade5 = Color.fromRGBO(255, 70, 10, 1);
   static const Color  ogreOdorGrade3 = Color.fromRGBO(255, 71, 11, 1);
+  static const Color  ogreOdorGrade6 = Color.fromRGBO(250, 74, 12, 1);
+  static const Color  ogreOdorGrade7 = Color.fromRGBO(215, 56, 0, 0.4);
 
 
 
@@ -15,6 +17,7 @@ class AppTheme {
   static const Color  black   = Color.fromRGBO(0, 0, 0, 1);//scaffoldD
   static const Color  white = Color.fromRGBO(255, 255, 255, 1);//scaffoldD
   static const Color  spanishGray= Color.fromRGBO(154, 154, 157, 1);//unselected category
+  static const Color  silverChalice= Color.fromRGBO(173, 173, 175, 1);//unselected category
 
 
 

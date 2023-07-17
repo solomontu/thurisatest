@@ -107,9 +107,12 @@ class CategoriesTabBar extends StatelessWidget {
           ),
           SizedBox(
               height: 312.h,
-              child: const TabBarView(children: [
-                ProductCard(),
-                OtherTabs(),
+              child: TabBarView(children: [
+                SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    child: Row(
+                      children: List.generate(5, (index) => ProductCard()),
+                    )),
                 OtherTabs(),
                 OtherTabs(),
                 OtherTabs(),
@@ -127,49 +130,66 @@ class ProductCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-        SizedBox(
-          height: 312.h,
-          width: 220.w,
-          child: Stack(children: [
-            Positioned(
-                bottom: 0,
-                child: Container(
-                  height: 270.h,
-                  width: 220.w,
-                  decoration: BoxDecoration(
-                    color: AppTheme.white,
-                    borderRadius: BorderRadius.circular(30),
-                  ),
-                )),
-            Positioned(
-                top: 0,
+    return Padding(
+      padding:  EdgeInsets.symmetric(horizontal: 8.0.w),
+      child: SingleChildScrollView(
+        child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+          SizedBox(
+            height: 312.h,
+            width: 220.w,
+            child: Stack(children: [
+              Positioned(
+                  bottom: 0,
+                  child: Container(
+                    height: 270.h,
+                    width: 220.w,
+                    decoration: BoxDecoration(
+                      color: AppTheme.white,
+                      borderRadius: BorderRadius.circular(30),
+                    ),
+                  )),
+              Positioned(
+                  top: 0,
+                  left: 30,
+                  right: 30,
+                  child: Container(
+                    child: Image.asset('assets/images/foodimage.png',
+                        fit: BoxFit.contain),
+                    height: 189.h,
+                    width: 168.w,
+                    decoration: BoxDecoration(
+                      color: Colors.black26,
+                      borderRadius: BorderRadius.circular(30),
+                    ),
+                  )),
+              Positioned(
+                bottom: 55.0.h,
                 left: 30,
                 right: 30,
-                child: Container(
-                  child: Image.asset('assets/images/foodimage.png',
-                      fit: BoxFit.contain),
-                  height: 189.h,
-                  width: 168.w,
-                  decoration: BoxDecoration(
-                    color: Colors.black26,
-                    borderRadius: BorderRadius.circular(30),
-                  ),
-                )),
-            Positioned(
-                bottom: 30.0.h,
-                left: 30,
-                right: 30,
-                child: Column(children: [Text(
-                  'Veggie tomato mix',
-                  style: TextStyle(
-                      fontSize: 22.sp, fontWeight: FontWeight.w600),
-                )],))
-            // SizedBox(height: 2.h),
-          ]),
-        )
-      ]),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Text(
+                      'Veggie tomato mix',
+                      style: TextStyle(
+                          overflow: TextOverflow.clip,
+                          fontSize: 22.sp,
+                          fontWeight: FontWeight.w600),
+                    ),
+                    Text('N1,900',
+                        style: TextStyle(
+                            color: AppTheme.ogreOdorGrade6,
+                            fontSize: 15.sp,
+                            fontWeight: FontWeight.w700))
+                  ],
+                ),
+              )
+              // SizedBox(height: 2.h),
+            ]),
+          )
+        ]),
+      ),
     );
   }
 }

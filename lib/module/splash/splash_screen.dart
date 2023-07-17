@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:go_router/go_router.dart';
 import 'package:thurisatest/config/app_colors.dart';
 
 class SplashScreen extends StatelessWidget {
@@ -113,7 +114,9 @@ class SplashScreen extends StatelessWidget {
                           borderRadius: BorderRadius.circular(
                               30), // Set the desired border radius here
                         )),
-                    onPressed: () {},
+                    onPressed: () {
+                      context.goNamed('home');
+                    },
                     child: Text(
                       'Get started',
                       style: TextStyle(
