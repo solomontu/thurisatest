@@ -1,11 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
-import 'package:thurisatest/config/app_colors.dart';
+import 'package:thurisatest/constants/asset_constants.dart';
+import 'package:thurisatest/constants/route_constants.dart';
+import 'package:thurisatest/services/repository/product_repository.dart';
 
-class SplashScreen extends StatelessWidget {
-  const SplashScreen({super.key});
+
+import '../../constants/string_constants.dart';
+import '../../theme/app_colors.dart';
+
+class OnboardPage extends StatelessWidget {
+  const OnboardPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -25,13 +31,13 @@ class SplashScreen extends StatelessWidget {
                         width: 73.w,
                         decoration: const BoxDecoration(
                             color: AppTheme.white, shape: BoxShape.circle),
-                        child: Image.asset('assets/images/Group 3chef.png',
+                        child: Image.asset(AssetConstants.appIcon,
                             fit: BoxFit.contain),
                       )),
                   Padding(
                     padding: EdgeInsets.only(left: 49.0.w),
                     child: Text(
-                      'Food for\nEveryone',
+                     AppString.onBordText,
                       style: TextStyle(
                         height: 0.8.h,
                         color: AppTheme.white,
@@ -43,18 +49,19 @@ class SplashScreen extends StatelessWidget {
                 ],
               ),
               Positioned(
-                top: 366.34.h,
-                left: 0.w,
-                child: Image.asset(
-                    'assets/images/ToyFaces_Tansparent_BG_49female.png'),
-              ),
-              Positioned(
                 top: 441.46.h,
-                right: 0.w,
+                right: 30.w,
                 child: Image.asset(
-                  'assets/images/ToyFaces_Tansparent_BG_29male.png',
+                  AssetConstants.toyMale,
                 ),
               ),
+              Positioned(
+                top: 366.34.h,
+                left: 30.w,
+                child: Image.asset(
+                    AssetConstants.toyFemale),
+              ),
+
               Positioned(
                   bottom: 0,
                   left: 0,
@@ -69,7 +76,7 @@ class SplashScreen extends StatelessWidget {
                           spreadRadius: 5,
                           blurRadius: 5,
                           offset:
-                              Offset(0, -3), // changes x,y position of shadow
+                          Offset(0, -3), // changes x,y position of shadow
                         ),
                       ],
                     ),
@@ -88,7 +95,7 @@ class SplashScreen extends StatelessWidget {
                             spreadRadius: 2,
                             blurRadius: 5,
                             offset:
-                                Offset(0, -3), // changes x,y position of shadow
+                            Offset(0, -3), // changes x,y position of shadow
                           ),
                         ],
                         gradient: LinearGradient(
@@ -107,22 +114,25 @@ class SplashScreen extends StatelessWidget {
                 right: 51.w,
                 child: SizedBox(
                   height: 70,
-                  child: OutlinedButton(
-                    style: OutlinedButton.styleFrom(
-                        backgroundColor: AppTheme.antiFlashWhite,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(
-                              30), // Set the desired border radius here
-                        )),
-                    onPressed: () {
-                      context.goNamed('home');
-                    },
-                    child: Text(
-                      'Get started',
-                      style: TextStyle(
-                          fontWeight: FontWeight.w600,
-                          fontSize: 17.sp,
-                          color: AppTheme.ogreOdorGrade5),
+                  child: RepositoryProvider(
+                      create: (context) => ProductRepository(),
+                    child: OutlinedButton(
+                      style: OutlinedButton.styleFrom(
+                          backgroundColor: AppTheme.antiFlashWhite,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(
+                                30), // Set the desired border radius here
+                          )),
+                      onPressed: () {
+                        context.goNamed(RouteConstants.home);
+                      },
+                      child: Text(
+                        AppString.getStarted,
+                        style: TextStyle(
+                            fontWeight: FontWeight.w600,
+                            fontSize: 17.sp,
+                            color: AppTheme.ogreOdorGrade5),
+                      ),
                     ),
                   ),
                 ),

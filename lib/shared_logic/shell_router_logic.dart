@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:thurisatest/shared_values/app_constants.dart';
+
+import '../constants/app_constants.dart';
 
 class ShellLogic {
   ShellLogic();

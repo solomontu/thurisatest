@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:thurisatest/module/shered_widget/button_navigation_bar/bottom_navigationbar.dart';
+
+import 'bottom_navigationbar.dart';
 
 class ScaffoldWithBottomNavBar extends StatelessWidget {
   const ScaffoldWithBottomNavBar({super.key, required this.child});

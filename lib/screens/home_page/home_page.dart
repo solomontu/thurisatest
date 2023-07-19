@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:thurisatest/config/app_colors.dart';
-import 'package:thurisatest/shared_values/app_constants.dart';
+import 'package:thurisatest/constants/asset_constants.dart';
+import 'package:thurisatest/constants/string_constants.dart';
+
+import '../../constants/app_constants.dart';
+import '../../theme/app_colors.dart';
+import '../product/widgets/product_cardBuilder.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -31,19 +35,19 @@ class _HomePageState extends State<HomePage> {
                     InkWell(
                         radius: 15.w,
                         onTap: () {},
-                        child: SvgPicture.asset('assets/icons/Vectormenu.svg')),
+                        child: SvgPicture.asset(AssetConstants.vectorMenu)),
                     InkWell(
                         radius: 15.w,
                         onTap: () {},
                         child: SvgPicture.asset(
-                            'assets/icons/shopping-cartcart.svg')),
+                            AssetConstants.cartCart)),
                   ],
                 ),
               ),
               Padding(
                 padding: EdgeInsets.only(left: 54.0.w, bottom: 50.h),
                 child: Text(
-                  'Delicious\nfood for you',
+                  AppString.deliciousFoodForYou,
                   style: TextStyle(
                     height: 0.8.h,
                     color: AppTheme.black,
@@ -98,7 +102,7 @@ class CategoriesTabBar extends StatelessWidget {
             padding: EdgeInsets.only(right: 30.0.w, bottom: 5.h),
             child: const Align(
               alignment: Alignment.bottomRight,
-              child: Text('See more',
+              child: Text(AppString.seeMore,
                   style: TextStyle(
                       color: AppTheme.primaryColor,
                       fontWeight: FontWeight.w400,
@@ -107,12 +111,8 @@ class CategoriesTabBar extends StatelessWidget {
           ),
           SizedBox(
               height: 312.h,
-              child: TabBarView(children: [
-                SingleChildScrollView(
-                    scrollDirection: Axis.horizontal,
-                    child: Row(
-                      children: List.generate(5, (index) => ProductCard()),
-                    )),
+              child: const TabBarView(children: [
+                ProductSBuilder(),
                 OtherTabs(),
                 OtherTabs(),
                 OtherTabs(),
@@ -120,75 +120,6 @@ class CategoriesTabBar extends StatelessWidget {
                 OtherTabs(),
               ]))
         ],
-      ),
-    );
-  }
-}
-
-class ProductCard extends StatelessWidget {
-  const ProductCard({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding:  EdgeInsets.symmetric(horizontal: 8.0.w),
-      child: SingleChildScrollView(
-        child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-          SizedBox(
-            height: 312.h,
-            width: 220.w,
-            child: Stack(children: [
-              Positioned(
-                  bottom: 0,
-                  child: Container(
-                    height: 270.h,
-                    width: 220.w,
-                    decoration: BoxDecoration(
-                      color: AppTheme.white,
-                      borderRadius: BorderRadius.circular(30),
-                    ),
-                  )),
-              Positioned(
-                  top: 0,
-                  left: 30,
-                  right: 30,
-                  child: Container(
-                    child: Image.asset('assets/images/foodimage.png',
-                        fit: BoxFit.contain),
-                    height: 189.h,
-                    width: 168.w,
-                    decoration: BoxDecoration(
-                      color: Colors.black26,
-                      borderRadius: BorderRadius.circular(30),
-                    ),
-                  )),
-              Positioned(
-                bottom: 55.0.h,
-                left: 30,
-                right: 30,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Text(
-                      'Veggie tomato mix',
-                      style: TextStyle(
-                          overflow: TextOverflow.clip,
-                          fontSize: 22.sp,
-                          fontWeight: FontWeight.w600),
-                    ),
-                    Text('N1,900',
-                        style: TextStyle(
-                            color: AppTheme.ogreOdorGrade6,
-                            fontSize: 15.sp,
-                            fontWeight: FontWeight.w700))
-                  ],
-                ),
-              )
-              // SizedBox(height: 2.h),
-            ]),
-          )
-        ]),
       ),
     );
   }
@@ -204,7 +135,7 @@ class OtherTabs extends StatelessWidget {
       width: 220.w,
       child: const Scaffold(
           body: Center(
-        child: Text('Work in progress'),
+        child: Text(AppString.workInProgress),
       )),
     );
   }
@@ -225,9 +156,9 @@ class SearchField extends StatelessWidget {
         decoration: InputDecoration(
           icon: Padding(
             padding: EdgeInsets.only(left: 40.w),
-            child: SvgPicture.asset('assets/icons/VectorsechIcon.svg'),
+            child: SvgPicture.asset(AssetConstants.seeMore),
           ),
-          hintText: 'Search',
+          hintText: AppString.search,
           border: InputBorder.none,
         ),
       ),

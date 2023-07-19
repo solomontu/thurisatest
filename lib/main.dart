@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:thurisatest/services/router_service/app_router.dart';
 
-import 'config/app_theme.dart';
+import 'theme/app_theme.dart';
 
 void main() {
   runApp(const MyApp());
@@ -21,6 +21,7 @@ class MyApp extends StatelessWidget {
             data: MediaQuery.of(context).copyWith(textScaleFactor: 0.8.sp),
             child: MaterialApp.router(
               debugShowCheckedModeBanner: false,
+
               title: 'Thurisa',
               theme: customAppTheme,
               routeInformationParser: router.routeInformationParser,
