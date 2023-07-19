@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
     return ScreenUtilInit(
         designSize: const Size(414.0, 897.0),
         minTextAdapt: true,
-        useInheritedMediaQuery: true,
+        useInheritedMediaQuery:false,
         builder: (BuildContext context, Widget? child) => MediaQuery(
             data: MediaQuery.of(context).copyWith(textScaleFactor: 0.8.sp),
             child: MaterialApp.router(

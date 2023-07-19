@@ -18,9 +18,11 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
-    return Material(
-        color: AppTheme.antiFlashWhite,
-        child: SafeArea(
+    return
+      Scaffold(
+        resizeToAvoidBottomInset: true,
+        backgroundColor: AppTheme.antiFlashWhite,
+        body: SafeArea(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisSize: MainAxisSize.max,
@@ -58,7 +60,7 @@ class _HomePageState extends State<HomePage> {
               ),
               Padding(
                 padding:
-                    EdgeInsets.only(left: 50.0.w, right: 50.0.w, bottom: 46.h),
+                EdgeInsets.only(left: 50.0.w, right: 50.0.w, bottom: 46.h),
                 child: const SearchField(),
               ),
               const CategoriesTabBar()
@@ -146,7 +148,8 @@ class SearchField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return
+      Container(
       alignment: Alignment.centerLeft,
       height: 60.h,
       decoration: BoxDecoration(
